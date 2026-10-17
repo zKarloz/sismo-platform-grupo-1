@@ -23,19 +23,23 @@ Preparar un monorepositorio reproducible con React/Vite/TypeScript, FastAPI, est
 
 ## Criterios de aceptación — marcar tras probar
 
-- [ ] `npm run dev` inicia React en http://localhost:5173.
-- [ ] `npm run lint` se ejecuta sin errores.
-- [ ] `npm run build` produce `apps/web/dist`.
-- [ ] `python -m uvicorn app.main:app --reload --port 8000` inicia FastAPI.
-- [ ] `GET /health` devuelve HTTP 200 y `status=ok`.
-- [ ] `GET /api/v1/status` devuelve HTTP 200.
-- [ ] La respuesta CORS permite `http://localhost:5173`.
-- [ ] `python -m unittest discover -s tests -p 'test_*.py' -v` pasa.
-- [ ] `docker build` finaliza sin errores.
-- [ ] El contenedor responde desde http://localhost:8001/health.
-- [ ] `git status` no muestra `.env`, `.venv` ni `node_modules` para commit.
-- [ ] GitHub contiene el commit inicial y se crean `main` y `develop`.
-- [ ] Los jobs de GitHub Actions terminan correctamente.
+Pruebas realizadas el 17/10//2026
+
+- [✓] `npm run dev` inicia React en http://localhost:5173.
+- [✓] `npm run lint` se ejecuta sin errores.
+- [✓] `npm run build` produce `apps/web/dist`.
+- [✓] `python -m uvicorn app.main:app --reload --port 8000` inicia FastAPI.
+- [✓] `GET /health` devuelve HTTP 200 y `status=ok`.
+- [✓] `GET /api/v1/status` devuelve HTTP 200.
+- [✓] La respuesta CORS permite `http://localhost:5173`.
+- [✓] `python -m unittest discover -s tests -p 'test_*.py' -v` pasa.
+- [✓] `docker build` finaliza sin errores.
+- [✓] El contenedor responde desde http://localhost:8001/health.
+- [✓] `git status` no muestra `.env`, `.venv` ni `node_modules` para commit.
+- [✓] GitHub contiene el commit inicial y se crean `main` y `develop`.
+- [✓] Los jobs de GitHub Actions terminan correctamente.
+- [ ] Diseño UX y navegación base
+- [ ] Documentación final de fase
 
 ## Comandos de comprobación
 
