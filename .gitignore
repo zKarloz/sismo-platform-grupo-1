@@ -1,0 +1,41 @@
+# =========================================
+# FRONTEND - NODE.JS / REACT / VITE
+# =========================================
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# =========================================
+# BACKEND - PYTHON
+# =========================================
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# =========================================
+# VARIABLES DE ENTORNO Y CREDENCIALES
+# =========================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# =========================================
+# SISTEMA OPERATIVO Y EDITORES
+# =========================================
+.DS_Store
+Thumbs.db
+*.log
+
+# =========================================
+# ARCHIVOS TEMPORALES
+# =========================================
+coverage/
+htmlcov/
+.coverage

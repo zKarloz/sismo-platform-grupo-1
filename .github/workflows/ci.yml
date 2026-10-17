@@ -1,0 +1,54 @@
+# ============================================================
+# CI BÁSICO | FASE 1
+# Valida frontend y backend antes de integrar cambios.
+# ============================================================
+name: CI - Sismo Platform
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  frontend:
+    name: React - lint y build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Revisar calidad estática
+        run: npm run lint
+      - name: Compilar aplicación
+        run: npm run build
+
+  backend:
+    name: FastAPI - pruebas
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/api
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+          cache: pip
+          cache-dependency-path: services/api/requirements.txt
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements.txt
+      - name: Ejecutar pruebas
+        run: python -m unittest discover -s tests -p 'test_*.py' -v

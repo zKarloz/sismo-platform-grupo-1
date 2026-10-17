@@ -1,0 +1,14 @@
+# ============================================================
+# EXCLUIR DEPENDENCIAS, SECRETOS Y ARCHIVOS DE DESARROLLO
+# ============================================================
+.venv/
+venv/
+.env
+.env.*
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+*.log
+.git/
+tests/
