@@ -1,7 +1,7 @@
-import react from '@vitejs/plugin-react'
+// BLOQUE 1 — Plugins oficiales para la compilación frontend.
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-})
+// BLOQUE 2 — Configuración de React y Tailwind CSS 4.
+export default defineConfig({ plugins: [react(), tailwindcss()] })
