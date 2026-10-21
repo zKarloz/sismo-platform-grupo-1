@@ -1,29 +1,32 @@
-"""Punto de entrada HTTP del backend FastAPI (Fase 1)."""
+"""Punto de entrada HTTP del backend FastAPI (Fases 1 y 3)."""
 
 # ============================================================
-# 1. IMPORTACIONES Y CONFIGURACIÓN
+# BLOQUE 1: Importaciones y configuración.
 # ============================================================
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
+from app.routers.dashboard import router as dashboard_router
+from app.routers.events import router as events_router
+from app.routers.sources import router as sources_router
 
 
 # ============================================================
-# 2. APLICACIÓN PRINCIPAL Y DOCUMENTACIÓN OPENAPI
+# BLOQUE 2: Aplicación principal y documentación OpenAPI.
 # ============================================================
 app = FastAPI(
     title=settings.app_name,
-    version="0.1.0",
+    version="0.2.0",
     description=(
-        "API del sistema de monitoreo sísmico. "
-        "Durante la Fase 1 expone únicamente comprobaciones técnicas."
+        "API de monitoreo sísmico. Incluye rutas técnicas de Fase 1 "
+        "y rutas P0 de eventos, fuentes, dashboard y mapa en desarrollo."
     ),
 )
 
 
 # ============================================================
-# 3. CORS PARA EL FRONTEND (LOCAL Y VERCEL)
+# BLOQUE 3: CORS para frontend (local y Vercel).
 # No permite todos los orígenes indiscriminadamente.
 # ============================================================
 app.add_middleware(
@@ -36,8 +39,8 @@ app.add_middleware(
 
 
 # ============================================================
-# 4. RUTAS DEL ESTADO DEL SERVICIO
-# Importante: /health comprueba la API, NO Supabase.
+# BLOQUE 4: Rutas existentes de Fase 1.
+# /health NO verifica la conexión a Supabase.
 # ============================================================
 @app.get("/health", tags=["Sistema"])
 def health_check() -> dict[str, str]:
@@ -49,3 +52,11 @@ def health_check() -> dict[str, str]:
 def api_status() -> dict[str, str]:
     """Verifica que el prefijo versionado funciona."""
     return {"status": "ok", "api_version": "v1"}
+
+
+# ============================================================
+# BLOQUE 5: Routers de lectura P0.
+# ============================================================
+app.include_router(events_router)
+app.include_router(sources_router)
+app.include_router(dashboard_router)
