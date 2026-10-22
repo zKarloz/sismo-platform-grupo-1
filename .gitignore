@@ -39,3 +39,17 @@ Thumbs.db
 coverage/
 htmlcov/
 .coverage
+
+# =========================================
+# ANÁLISIS E INGESTA - FASE 03
+# =========================================
+
+# Entorno virtual de exploración y preprocesamiento
+.venv-data/
+
+# Datos originales descargados de proveedores
+data/raw/
+
+# Resultados locales de procesamiento y auditoría
+data/processed/
+data/reports/

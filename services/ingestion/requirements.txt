@@ -1,0 +1,5 @@
+# =====================================================
+# Dependencia mínima para leer exportaciones XLSX del IGP.
+# El normalizador y los tests usan la biblioteca estándar.
+# =====================================================
+openpyxl>=3.1,<4
